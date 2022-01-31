@@ -1,0 +1,40 @@
+.container {
+    height: 100vh;
+}
+
+.login-card {
+    background-color: var(--lightDark);
+    border-radius: 1rem;
+}
+
+input {
+    background-color: var(--dark) !important;
+    color: white !important;
+    border: none !important;
+}
+
+input:focus {
+    box-shadow: none !important;
+}
+
+button.btn.btn-primary {
+    padding: 1rem;
+    background-color: var(--dark);
+    color: var(--orange);
+    border: none;
+}
+
+button.btn.btn-primary:hover {
+    background-color: var(--orange);
+    color: var(--dark);
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: white;
+    text-decoration: underline;
+}

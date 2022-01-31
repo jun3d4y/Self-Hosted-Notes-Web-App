@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block page_css %}
+<link
+    href="{{ url_for('static', filename='css/bootstrap-grid.min.css') }}"
+    rel="stylesheet"
+>
+<link
+    href="{{ url_for('static', filename='css/notes.css') }}"
+    rel="stylesheet"
+>
+<link
+    href="{{ url_for('static', filename='css/modal.css') }}"
+    rel="stylesheet"
+>
+{% endblock %}
+
+{% block page_content %}
+<div id="modal" class="modal-container center-flex">
+    <div class="modal">
+        <span id="close" class="close">&times;</span>
+        <div class="modal-content">
+            <div class="title horizontal-flex">
+                Account
+            </div>
+            <form action="{{ url_for('auth.change') }}" method="post">
+                <input type="hidden" name="string_id" value="{{ string_id }}">
+                <div class="item">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" value="{{ current_user.username }}">
+                </div>
+                <div class="item">
+                    <label for="password">Password</label>
+                    <input type="password" name="password">
+                </div>
+                <div class="item">
+                    <label for="password_verif">Password verification</label>
+                    <input type="password" name="password_verif">
+                </div>
+                <div class="item horizontal-flex">
+                    <input type="submit" name="CHANGE" value="CHANGE">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row w100 h100">
+    <div class="col-2 w100 h100">
+        <div class="sidebar">
+            <div class="title">
+                <p>My notes</p>
+                <a onclick="create()" href="#">
+                    <img class="icon" src="{{ url_for('static', filename='img/plus.png') }}" alt="Add">
+                </a>
+                <a onclick="delete_note()" href="#">
+                    <img class="icon" src="{{ url_for('static', filename='img/trash.png') }}" alt="Delete">
+                </a>
+            </div>
+            <div class="notes-list">
+                {% for note in notes %}
+                <a href="{{ url_for('views.note', string_id=note.string_id) }}">
+                    <div class="item {% if note.string_id == string_id %}active{% endif %}">
+                        {{ note.title }}
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row user center-flex">
+            <div class="items">
+                <p>{{ current_user.username }}</p>
+                <div class="">
+                    <a href="{{ url_for('auth.logout') }}">
+                        <img class="icon" src="{{ url_for('static', filename='img/signoff.png') }}" alt="Sign out">
+                    </a>
+                    <a id="modal_event" href="#">
+                        <img class="icon" src="{{ url_for('static', filename='img/gear_white.png') }}" alt="Options">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-10 w100 h100">
+        <div class="row w100">
+            <input type="hidden" id="string_id" value="{{ string_id }}">
+            <div class="col-12 w100">
+                <div class="title">
+                    <input type="text" id="title" value="{{ title }}">
+                    <img id="saved" class="icon" src="{{ url_for('static', filename='img/check.png') }}" alt="saved">
+                </div>
+            </div>
+        </div>
+        <div class="row h100 w100">
+            <iframe src="{{ url_for('views.iframe' )}}" id="editor"></iframe>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block page_js %}
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}" charset="utf-8"></script>
+<script src="{{ url_for('static', filename='js/modal.js') }}" charset="utf-8"></script>
+<script src="{{ url_for('static', filename='js/titleSize.js') }}" charset="utf-8"></script>
+
+<script type="text/javascript">
+    {% include 'js/api.js' %}
+</script>
+{% endblock %}

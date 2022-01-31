@@ -1,0 +1,58 @@
+:root {
+    --dark: #252525;
+    --lightDark: #404040;
+    --textDark: #c0c0c0;
+    --orange: #e67e22;
+    --green: #2ecc71;
+    --red: #c0392b;
+}
+
+@font-face{
+    font-family: sfpro;
+    src: url('../fonts/SFPRODISPLAYREGULAR.OTF');
+    font-weight: normal;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+
+    transition: .25s;
+}
+
+html,
+body {
+    font-family: sfpro !important;
+    background-color: var(--dark) !important;
+    color: white !important;
+
+    overflow: hidden;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.h100 {
+    height: 100%;
+}
+.w100 {
+    width: 100%;
+}
+
+.center-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.horizontal-flex {
+    display: flex;
+    justify-content: center;
+}

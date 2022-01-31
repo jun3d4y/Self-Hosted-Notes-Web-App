@@ -1,0 +1,8 @@
+<iframe src="" id="iframe"></iframe>
+<script type="text/javascript">
+window.onload = function(){
+    var frameElement = document.getElementById("iframe");
+    var doc = frameElement.contentDocument;
+    doc.body.contentEditable = true;
+}
+</script>
