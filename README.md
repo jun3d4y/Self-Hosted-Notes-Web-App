@@ -1,4 +1,4 @@
-# 
+
 # Self Hosted Notes Web App
 
 A simple online notes keeper, written in python using Flask and Sqlalchemy. You can host it on your server to have your notes safe on it.
@@ -33,6 +33,10 @@ Start the server locally
   python app.py
 ```
 
+
+## Deployment
+
+To deploy this project please follow this tutorial : https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
 
 ## Demo
 
